@@ -1,10 +1,10 @@
-function splitAndMerge(str, sp=" "){
-  let words = str.split(' ');
-  for(w in words){
-    words.splice(w,1,words[w].split(''));
-    words[w] = words[w].join(sp);
-  }
-  words = words.join(' ');
-  return words
+function splitAndMerge(str, sp = " ") {
+    let words = str.split(' ');
+    words = words.map(function(w, i) {
+        words.splice(i, 1, w.split(''));
+        return words[i].join(sp);
+    })
+    words = words.join(' ');
+    return words
 }
 splitAndMerge('Hi there', '+');
